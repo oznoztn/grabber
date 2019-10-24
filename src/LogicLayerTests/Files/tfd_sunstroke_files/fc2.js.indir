@@ -1,0 +1,323 @@
+if (typeof fc == 'undefined')
+var fc = new function () {
+	var th = this;
+	
+	var uNfo = null;
+	this.stor = (typeof(Storage)!=="undefined");
+	this.refresh = function (f) {
+		var lp = ById('loginBlock');
+		if (lp) {
+			lp.onclick = function () { if (th.isLogIn()) location.href = fconn.URL; }
+			var un;
+			if ((un = this.isLogIn())) {
+				info.isLogin = true;
+				if (un.length > 18) un = un.substr(0, 18) + '...';
+				var avatar = "";
+				if (uNfo.ava) avatar = "<td class='ava'><img src='" + fconn.URL + "static/avatar/" + uNfo.ava + "'/></td>";
+				if (uNfo.brain < 20) u = "0";
+				else if (uNfo.brain < 40) u = "20";
+				else if (uNfo.brain < 60) u = "40";
+				else if (uNfo.brain < 80) u = "60";
+				else if (uNfo.brain < 100) u = "80";
+				else if (uNfo.brain < 150) u = "100";
+				else if (uNfo.brain < 200) u = "150";
+				else u = "200";
+				if (uNfo.goal) un += " <span class='fcImg goal'></span>";
+				var badges = "";
+				if (uNfo.b1) badges += "<span class='fcImg bg_1sm'></span>" + uNfo.b1;
+				if (uNfo.b2) badges += "<span class='fcImg bg_2sm'></span>" + uNfo.b2;
+				badges += "<br/>";
+				if (uNfo.b3) badges += "<span class='fcImg bg_3sm'></span>" + uNfo.b3;
+				if (uNfo.meals) badges += "<span class='fcImg mealsSm'></span><span id=fcMeals>" + uNfo.meals + "</span>";
+				if (badges != "") badges = "<div class='bdg-details'>" + badges + "</div>";
+				var pp = "";
+				if (uNfo.p == 0);
+				else if (uNfo.p < 1000) pp = uNfo.p;
+				else pp = Math.round(uNfo.p / 100) / 10 + "K"
+				if (pp) pp = "<span id=fcPnts>" + pp + "</span>";
+				var mp = "<td><div class='badges'><span class='fcImg neuron16'></span>" + pp + badges + "</div>";
+				mp += "<div class='brn'><span class='fcImg br" + u + "sm'></span><br><span id='brp" + u + "'>" + uNfo.brain + "%</span></div></td>";
+				var content = "<table id='fcPTBL' class='info-details' style='max-height:40px'><tr><td colspan='2' class='info-name'><span class='fcImg lev" + uNfo.lev + "sm'></span>" + un + "</td></tr><tr>" + avatar + mp + "<\/tr><\/table>";
+				content += "<div id='dNotif'></div>";
+				lp.innerHTML = content;
+				ById('headerBlock').className = 'header-block info-block';
+				if (h = document.querySelector('.header-top > .logo-holder')) h.className = 'logo-holder auth';
+				refreshNotif();
+				if (!f) th.sync();
+				fconn.pushEvts(th);
+			}
+		}
+	}
+	function isTFD() { return document.domain.split('.')[0] != 'forum'; }
+	function getPos(el) {
+	   for (var lx = 0, ly = 0; el != null; lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
+	   return { x: lx, y: ly };
+	}
+	function refreshNotif() {
+		var n = lib.cookie.get('notif');
+		var prevN = (th.stor ? localStorage.getItem("prevNotif") : "");
+		if ((info.tab == 2048 || info.tab == 32768) && n && n == prevN) { n = ''; lib.cookie.set('notif', '', 0, 1); }
+		
+		if (!n) ById('dNotif').innerHTML = "";
+		else {
+			if (th.stor) localStorage.setItem("prevNotif", n);
+			var s = n.split('/');
+			ntf = { 'evId': s[0], 'css': s[1], 'msg': lib.decode(s[2]), 'shTx': s[3] };
+			var lnk = escape(fconn.URL + 'user/' + uNfo.url + '/' + ntf.evId + '?rff=b' + uNfo.id);
+			var tx = escape(ntf.shTx);
+			var fb = '<li class="facebook"><a target="_blank" href="http:/' + '/www.facebook.com/share.php?u=' + lnk + '" title="Share on Facebook"></li>';
+			var gp = '<li class="googleplus"><a href="https:/' + '/plus.google.com/share?url=' + lnk + '" target="_blank" title="Share on Google+"></a></li>';
+			var tw = '<li class="twitter"><a href="https:/' + '/twitter.com/share?url=' + lnk + '&text=' + tx + '" target="_blank" title="Share on Twitter"></a></li>';
+			var li = '<li class="linkedin"><a href="http:/' + '/www.linkedin.com/shareArticle?mini=true&amp;url=' + lnk + '&amp;title=The%20Free%20Dictionary&amp;summary=' + tx + '&amp;source=TheFreeDictionary.com" target="_blank" title="Share on LinkedIn"></a></li>';
+			var email = '<li class="mail hide400"><a href="mailto' + ':?subject=' + tx + '&body=' + tx + '%0d%0a%0d%0aURL%3a ' + lnk + '" title="E-mail"></a></li>';
+			var sh = '<div id="shD"><ul class="social-networks">' + fb + gp + tw + li + email + '</ul></div>';
+			var nImg = ntf.evId == 'GL' ? "<img src='" + fconn.URL + "/static/img/bookman_notif.gif'/>" : "<span class='fcImg " + ntf.css + "'></span>";
+			ById('dNotif').innerHTML = "<table id=modal" + (ntf.evId == 'GL' ? " style='background-color:white'" : "") + "><tr><td style='min-width:25px'>" + nImg + "</td><td>" + ntf.msg + sh + "</td><td id=mClz><div id=dClz><span id=modalClose class='img A'></span></div></td></tr></table>";
+			function stpp(e) { e = e || window.event; if (e.stopPropagation) e.stopPropagation(); else e.cancelBubble = true; }
+			ById('modal').onclick = function (e) {
+				ById('dNotif').innerHTML = ""; lib.cookie.set('notif', '', 0, 1); lib.AsyncRequest(fconn.URL + 'api/resetNotif.ashx?r=' + Math.random());
+				if (ntf.evId == 'ML') { location.href = fconn.URL + '/FeedChildProgram.aspx'; stpp(e); }
+			}
+			ById('modalClose').onclick = function (e) {ById('dNotif').innerHTML = ""; lib.cookie.set('notif', '', 0, 1); lib.AsyncRequest(fconn.URL + 'api/resetNotif.ashx?r=' + Math.random()); stpp(e); }
+			ById('shD').onclick = function (e) { stpp(e); }
+			if (ById('toggle_td_30') && ById('toggle_td_30').style.display=='none') ById('toggle_td_30').style.display='';
+		}
+	}
+	function refreshUNfo(idx) {
+		var n = lib.decode(lib.cookie.get('userNfo'));
+		if (!n) return null;
+		var s = n.split('//');
+		if (s.length < 10) return null;
+		var goal = null;
+		if (s.length > 11) {
+			var gg = s[11].split('/');
+			goal = {id: gg[0], lev:+gg[1], currV: +gg[2], totalV: +gg[3]};
+		}
+		uNfo = { 'id': s[0], 'name': s[1], 'p': +s[2], 'lev': +s[3], 'brain': +s[4], 'b1': +s[5], 'b2': +s[6], 'b3': +s[7], 'meals': +s[8], 'ava': s[9], 'url': s[10], 'goal': goal };
+	}
+	function tm() {return (new Date()).getTime() }
+	function cb() {return "&x=" + tm()}
+	function ut() {return (typeof fconn.usrTicket == 'function' && (info.tab == 2048 || info.tab == 32768) && (nav.IE||nav.Edge) ? '&userTicket=' + fconn.usrTicket() : '')}
+	function isHomepage() { return isTFD() && ById('fHP'); }
+	function isWordpage() { return (typeof info == 'undefined' || typeof info.word == 'undefined') ? 0 : info.word }
+	function ctrlSumm(s) {
+		var j = 0;
+		for (var i in s) {
+			j += s.charCodeAt(i) * (i + 1);
+		}
+		return j.toString(36);
+	}
+	
+	this.getSharePar = function () {
+		return Math.random().toString(36).substring(2, 4) + uNfo.id;
+	}
+	this.isLogIn = function() {
+		if (!lib.cookie.get('userTicket')) return null;
+		refreshUNfo();
+		if (uNfo) return uNfo.name;
+		return null;
+	}
+	function getWLPar() {
+		var pg = +localStorage['bookmarkPg'];
+		var v = (pg > 1 ? 'pg=' + pg : '') + (localStorage['bookmarkSort'] == 'abc' ? '&sort=abc' : '');
+		if (v) return '&' + v; else return '';
+	}
+	this.saveWL = function (par) {
+		if (th.isLogIn()) lib.AsyncRequest(fconn.URL + 'api/wordList.ashx?v2=1&can=' + info.canonical + '&r=' + Math.random() + getWLPar() + (par ? '&' + par : '') + ut());
+	}
+	this.wordListPage = function (p) {localStorage['bookmarkPg'] = p; th.saveWL() }
+	this.wordListSort = function (s) {localStorage['bookmarkSort'] = s;th.saveWL() }
+	this.wordListDel = function (i) { return '&nbsp;&nbsp;<a title="Delete" class="delBookmark" href="javascript' + ':fc.saveWL(\'o=delete&i=' + i + '\')">x</a><br>' }
+	this.wordListAdd = function (b) {if (b.className != 'disabled') fc.saveWL('o=add&u=' + info.canonical)}
+	this.setOccupation = function (o) {
+		if (th.isLogIn()) lib.AsyncRequest(fconn.URL + 'api/setOccupation.ashx?o=' + o + cb());
+	}
+	this.setWL = function (wl, canAdd) {
+		lib.hide('wordlist-login'); lib.show('wordlist-content');
+		if (ById('word_list')) ById('word_list').innerHTML = wl;
+		lib.show('wlAdd'); if (ById('wlAdd')) ById('wlAdd').className = canAdd != 0 ? '' : 'disabled';
+		if (wl) ById('wlExcel').style.display='block'; else lib.hide('wlExcel');
+		if ('Sticky' in window) Sticky.init();
+	}
+	this.onSyncHP = function (hp2, ver) {
+		if (!this.isLogIn() || !isHomepage()) return;
+		lib.cookie.set('hp2v', escape(ver), 1, 0);
+		lib.cookie.set('hp2', hp2, 1, 0);
+		location.reload();
+	}
+	this.onSyncHPv = function (ver) {
+		if (!this.isLogIn() || !isHomepage()) return;
+		lib.cookie.set('hp2v', escape(ver), 1, 0);
+	}
+	this.sync = function () {
+		if (!th.isLogIn() || !isTFD()) return;
+		if (isHomepage()) {
+			var hp2 = lib.cookie.get('hp2',1,0);
+			var ver = lib.cookie.get('hp2v',1,0);
+			lib.AsyncRequest(fconn.URL + 'api/sync.ashx?v2=1' + getWLPar() + '&d=' + document.domain.split('.')[0] + (hp2 ? '&hp2=' + encodeURIComponent(hp2) : '') + (ver ? '&v=' + ver : '') + cb());
+		} else if (isWordpage()) th.saveWL();
+	}
+	this.saveWordMaker = function (d) { if (th.isLogIn()) lib.AsyncRequest(fconn.URL + 'api/saveWordMaker.ashx?d=' + encodeURIComponent(d)); }
+	this.regEv = function (event, p) {
+		if (th.isLogIn()) {
+			var v = event.split(':');
+			if (v.length == 2) {
+				if (!th.goal.isActive(v[0])) return;
+				event = v[1];
+			}
+			lib.AsyncRequest(fconn.URL + 'api/ev.ashx?e=' + event + (p ? '&p=' + p : '') + cb() + ut());
+		}
+	}
+	this.gshSave = function (event) {
+		if (th.isLogIn()) {
+			lib.AsyncRequest(fconn.URL + 'api/ev.ashx?e=' + event + ut());
+		}
+	}
+	this.onEvReg = function (c) {
+		if (typeof fconn.syncCookie == "function") fconn.syncCookie(c);
+		this.refresh(1);
+	}
+	this.txt = {
+		'GoalXMore': "You won! Win {0} more games in a row to reach your goal for today.",
+		'Goal1More': "You won! Win the next game to reach your goal for today.",
+		'GoalGot': "Great job! You just reached your goal for today."
+	}
+	this.goal = {
+		isActive: function (g) { return uNfo && uNfo.goal && uNfo.goal.id.indexOf(g) == 0 },
+		getMsg: function (g) {
+			if (!this.isActive(g)) return null;
+			var n = uNfo.goal.totalV - uNfo.goal.currV - 1;
+			return "<span class='fcImg goal'></span> " + (n == 0 ? th.txt.GoalGot : (n == 1 ? th.txt.Goal1More : th.txt.GoalXMore.replace("{0}", n)));
+		},
+		getLev: function (g) {
+			if (!this.isActive(g)) return null;
+			return uNfo.goal.lev;
+		}
+	}
+	this.wm = new function () {
+		this.newGame = function (lang) { lib.AsyncRequest(fconn.URL + 'api/wordMaker/newGame.ashx?lang=' + lang + cb()) }
+		this.addWord = function (word, onSuccess, onError) { lib.AsyncRequest(fconn.URL + 'api/wordMaker/addWord.ashx?word=' + encodeURIComponent(word),null,onSuccess,onError) }
+		this.gameOver = function () { lib.AsyncRequest(fconn.URL + 'api/wordMaker/gameOver.ashx?x=' + tm()) }
+		this.sort = function (isABC) { lib.AsyncRequest(fconn.URL + 'api/wordMaker/sort.ashx?abc=' + isABC + cb()) }
+		this.whGameOver = function (lang, seed, wordsFound, wordsTotal) { lib.AsyncRequest(fconn.URL + 'api/wordhub/endGame.ashx?lang=' + encodeURIComponent(lang) + "&seed=" + encodeURIComponent(seed) + "&wordsFound=" + encodeURIComponent(wordsFound.join(',')) + "&wordsTotal=" + encodeURIComponent(wordsTotal) + "&timed=True&tfd=1") }
+		this.whGetLastRound = function (lang) { lib.AsyncRequest(fconn.URL + 'api/wordhub/getLastRoundStat.ashx?lang=' + encodeURIComponent(lang) + "&tfd=1") }
+	}
+	this.refresh();
+	if (this.isLogIn()) {
+		var ff = document.createElement("link");
+		ff.setAttribute("rel", "stylesheet");
+		ff.setAttribute("type", "text/css");
+		ff.setAttribute("href", "http://secure.thefreedictionary.com/static/css/ex.css?3");
+		document.body.appendChild(ff);
+	}
+	if (isWordpage()) setTimeout(function () { fc.regEv('p'); }, 5000);
+}
+if ('fcLoginInit' in window) { fcLoginInit(); }
+
+if (typeof school == 'undefined')
+var school = new function () {
+	function tm() { return (new Date()).getTime() }
+	function cb() { return "&x=" + tm() }
+
+	var isActiveTask = 0;
+	var timeTracker = null;
+	function TaskTimeTracker() {
+		this.seconds = function () { return t * 30; }
+		var cnt = 0;
+		var t = 0;
+		var itv = setInterval(function () {
+			if (cnt >= 6) return;
+			if (isActiveTask) lib.AsyncRequest(fconn.URL + 'api/school/regReading.ashx?x=' + tm());
+			cnt++; t++;
+		}, 30000);
+		lib.event.add(document, 'scroll', function () {
+			cnt = 0;
+		});
+		this.off = function () { clearInterval(itv); itv = 0; }
+	}
+	this.quizSubmit = function (r, a) {
+		if (isActiveTask) {
+			lib.AsyncRequest(fconn.URL + 'api/school/quizSubmit.ashx?r=' + r + "&a=" + a + cb());
+			isActiveTask = 0;
+		} else {
+			lib.AsyncRequest(fconn.URL + 'api/school/selfTestSubmit.ashx?r=' + r + "&a=" + a + '&time=' + timeTracker.seconds() + '&tit=' + encodeURIComponent(info.word) + cb());
+		}
+		timeTracker.off();
+	}
+	this.callbackStudentError = function (msg) {
+		quiz.showDialog('<div class="title" style="color:red">' + msg + '</div><span class="button okBtn" onclick="lib.hide(\'studentDialog\')">OK</span>');
+	}
+	this.callbackStudentCompleted = function (s) {
+		quiz.showInfobox(s);
+	}
+	this.callbackStudentOk = function (s) {
+		quiz.showDialog('<div class="title">' + s + '</div><span class="button okBtn" onclick="lib.hide(\'studentDialog\')">OK</span>')
+		quiz.showInfobox(s);
+		isActiveTask = 1;
+		if (!timeTracker) timeTracker = new TaskTimeTracker();
+	}
+	this.shareLink = function () {
+		lib.AsyncRequest('https://secure.thefreedictionary.com/api/school/getLink.ashx');
+		quiz.showDialog('<div id="classDiv"></div><div id="linkCopied"></div><div id="studentLinkLoading"><img width="16" height="16" src="//img.tfd.com/m/wait16.gif"></div> \
+			<div id="studentLinkDiv"></div><div style="clear:both"></div>');
+	}
+
+	var linkUrl;
+	this.refreshLink = function () {
+		var t = ById('classSelect');
+		linkUrl = info.canonical + '?task=' + t.options[t.selectedIndex].value;
+		ById('studentLink').innerHTML = linkUrl;
+	}
+	this.shareEmail = function () {
+		quiz.hideDialog();
+		location = 'mailto' + ':?subject=' + encodeURIComponent(info.word) + '&body=' + encodeURIComponent(linkUrl);
+	}
+	var trans;
+	this.copyLink = function () {
+		ById('studentLink').select();
+		var successful = false;
+		try {
+			successful = document.execCommand('copy');
+		} catch (e) { }
+		if (successful) {
+			ById('linkCopied').innerHTML = "<div class=\"linkCopied\">" + trans.linkCopied + "</div>";
+		} else {
+			alert("Can't copy. Please copy manually.");
+		}
+	}
+	this.linkClick = function () {
+		var sl = ById('studentLink');
+		sl.focus();
+		sl.select();
+		sl.setSelectionRange(0, 9999);
+	}
+	function share(u) {
+		quiz.hideDialog();
+		social.open(u.replace("{u}", encodeURIComponent(linkUrl)).replace("{w}", encodeURIComponent(info.word)));
+	}
+	this.shareFacebook = function () { share('https://www.facebook.com/sharer/sharer.php?u={u}') }
+	this.shareTwitter = function () { share('http://twitter.com/share?url={u}&text={w}&via=farlex') };
+	this.shareGoogle = function () { share('https://plus.google.com/share?url={u}'); }
+	this.callbackLink = function (dt, tr) {
+		trans = tr;
+		var s = '';
+		for (var i = 0; i < dt.length; i++) {
+			s += "<option value=\"" + dt[i].link + "\">" + dt[i].name + "</option>";
+		}
+		if (dt.length <= 1) lib.hide('classDiv');
+		ById('classDiv').innerHTML = '<span>' + tr.sClass + '</span><select onchange="school.refreshLink()" id="classSelect">' + s + '</select>';
+		var copyLnk = document.queryCommandSupported("copy") ? '<a class="shr-link" onclick="school.copyLink()">' + tr.copyLinkBtn + '</a>' : '';
+		ById('studentLinkDiv').innerHTML = '<div class="title">' + tr.shrMsg + '</div><textarea id="studentLink" onclick="school.linkClick()" class="link" readonly="readonly"></textarea> \
+			' + copyLnk + '<a class="shr-email" onclick="school.shareEmail()">Email</a><br /> \
+			<a class="shr-facebook" onclick="school.shareFacebook()">Share</a><a class="shr-twitter" onclick="school.shareTwitter()">Tweet</a> \
+			<a class="shr-google" onclick="school.shareGoogle()">Share</a><div class="note">' + tr.note + '</div>';
+		ById('studentLinkLoading').innerHTML = '';
+		this.refreshLink();
+	}
+	if (location.hostname != 'www.thefreedictionary.com' || !lib.EndsWith(location.pathname,".htm") || !ById('dialogContainer')) return;
+	if (lib.StartsWith(location.search, "?task=")) {
+		lib.AsyncRequest('https://secure.thefreedictionary.com/api/school/taskStart.ashx?tit=' + encodeURIComponent(info.word));
+	} else {
+		timeTracker = new TaskTimeTracker();
+	}
+}

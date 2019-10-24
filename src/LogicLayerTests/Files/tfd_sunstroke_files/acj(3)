@@ -1,0 +1,17 @@
+OX_7505693954({
+  "ads":{
+    "medium":"mw",
+    "record_tmpl":"http://farlex-d.openx.net/{medium}/1.0/{rtype}?ts={txn_state}",
+    "pixels":"http://us-u.openx.net/w/1.0/pd?plm=6&ph=fbc3acfb-b2a1-49a1-9ef7-47ee76876bb6",
+    "oxt": 7.802,
+    "adunits" : [
+      {
+        "auid":"538379787",
+        "chain_revenue":"",
+        "size":"728x90",
+        "chain":[
+        ]
+      }
+    ]
+  }
+});

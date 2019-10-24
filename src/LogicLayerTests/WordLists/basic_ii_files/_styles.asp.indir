@@ -1,0 +1,164 @@
+body {
+
+	font-family: Lucida Sans Unicode;
+	margin:0px;
+	padding:0px;
+	background-color: #FDFDFA;
+	color: #5F5F5F;
+
+}
+
+
+table {
+	font-size:13px;
+	padding: 5px;
+	border-collapse:collapse;
+
+}
+
+
+.BACKGROUND {
+
+	background-color:#333;
+
+}
+
+
+
+.Top_Menu {
+
+	float:right;
+	background-color: #444;
+	padding: 3px;
+	padding-left: 6px;
+	padding-right: 6px;
+	margin-right:10px;
+	font-size: 12px;
+
+}
+
+
+.Bottom_Menu {
+
+	width:100%;
+	height:40px;
+	background-color:#333;
+
+}
+
+.Top_Float_Link {
+
+	color:white;
+	text-decoration: none;
+
+}
+
+
+.Top_Float_Link:hover {
+
+	text-decoration: underline;
+
+}
+
+
+.Title {
+
+	text-decoration:none;
+	font-size:34px;
+	color:#CCCCCC;
+	font-weight:bold;
+}
+
+
+.Version {
+
+	color:#cccccc;
+	font-size:9px;
+	vertical-align: 150%;
+}
+
+
+
+
+.Top_Menu_Link {
+
+	color:white;
+	text-decoration: none;
+	padding:11px;
+	padding-bottom: 14px;
+
+	font-size:20px;
+
+}
+
+.Top_Menu_Selected {
+
+	background-color: #CC6699;
+
+
+}
+
+
+a.Top_Menu_Link:hover {
+
+	background-color:#CC6699;
+
+}
+
+
+.Main_Menu {
+
+	background-color:#CC6699;
+	padding:7px;
+	padding-top:10px;
+	padding-bottom:12px;
+
+
+}
+
+
+.Main_Menu_Link {
+
+	font-size:18px;
+	color:white;
+	padding: 5px;
+	padding-left:13px;
+	padding-right:13px;
+	padding-bottom:8px;
+	text-decoration: none;
+
+}
+
+a.Main_Menu_Link:hover {
+
+	background-color:#9B3367;
+
+}
+
+
+.Selected_Link {
+
+	background-color:#9B3367;
+
+}
+
+
+
+table.wordlist {
+	font-size:17px;
+	padding: 10px;
+
+}
+
+table.wordlist th {
+
+}
+
+table.wordlist td {
+	padding: 5px;
+	border: 2px solid #ccc;
+}
+
+
+
+

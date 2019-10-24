@@ -1,0 +1,29 @@
+OX_183344375({
+  "ads":{
+    "chain":1,
+    "medium":"w",
+    "record_tmpl":"https://uk-ads.openx.net/{medium}/1.0/{rtype}?ts={txn_state}",
+    "pixels":"https://eu-u.openx.net/w/1.0/pd?plm=1&ph=50ab0170-10fc-4aec-b816-8e01043433e7",
+    "oxt": 231.553,
+    "adunits" : [
+      {
+        "auid":"538586949",
+        "chain_timeout":"",
+        "chain":[
+          {
+            "is_fallback":1,
+            "ad_id":"0",
+            "adv_acct_id":"",
+            "width":"300",
+            "height":"250",
+            "html":"<script type=\"text/javascript\"><!--\ngoogle_ad_client = \"ca-pub-1407561118813147\";\n/* odo_passback_openx */\ngoogle_ad_slot = \"4177424505/6636771705\";\ngoogle_ad_width = 300;\ngoogle_ad_height = 250;\n//-->\n</script>\n<script type=\"text/javascript\"\nsrc=\"//pagead2.googlesyndication.com/pagead/show_ads.js\">\n</script>",
+            "target":"_blank",
+            "ts":"1fHJpZD05ZDlhYjk1NC02MjJiLTQ1ZmMtODI3Ny1jYzg1ZDM5NjQxOGZ8cnQ9MTUwMTQzOTg2MnxhdWlkPTUzODU4Njk0OXxhdW09RE1JRC5XRUJ8YXVwZj1kaXNwbGF5fHNpZD01MzcyNTY2NTJ8cHViPTUzNzEzNDM0MHxwYz1HQlB8cmFpZD03NTgzNTYxMS01MjExLTQxNTUtODFkZC0xNTg0YjhiYzg4ZGZ8cnM9MXx1cj1EempPckRRSm1w",
+            "type":"html",
+            "ad_url":"<script type=\"text/javascript\"><!--\ngoogle_ad_client = \"ca-pub-1407561118813147\";\n/* odo_passback_openx */\ngoogle_ad_slot = \"4177424505/6636771705\";\ngoogle_ad_width = 300;\ngoogle_ad_height = 250;\n//-->\n</script>\n<script type=\"text/javascript\"\nsrc=\"//pagead2.googlesyndication.com/pagead/show_ads.js\">\n</script>"
+          }
+        ]
+      }
+    ]
+  }
+});

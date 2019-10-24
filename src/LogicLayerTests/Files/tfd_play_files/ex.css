@@ -1,0 +1,163 @@
+﻿.fcImg {background-image: url(http://secure.thefreedictionary.com/static/img/all.png?1);background-repeat:no-repeat;text-decoration:none;display:inline-block;margin:0;vertical-align:middle;font-size:0;letter-spacing:-1px;text-align:left;color:white;width:32px;height: 32px}
+.neuron16{background-position:-168px -529px;width:16px;height:16px;margin:1px 3px 1px 0px;vertical-align:top}
+.bg_g_1{background-position: -168px -1px}
+.bg_g_2{background-position: -168px -34px}
+.bg_g_3{background-position: -168px -67px}
+.bg_gb_1{background-position:0px -34px}
+.bg_gb_2{background-position:-33px -34px}
+.bg_gb_3{background-position:-66px -34px}
+.bg_gbm_1{background-position:-99px -577px}
+.bg_gbm_2{background-position:-132px -577px}
+.bg_gbm_3{background-position:-165px -577px}
+.bg_gh_1{background-position:0px -67px}
+.bg_gh_2{background-position:-33px -67px}
+.bg_gh_3{background-position:-66px -67px}
+.bg_ghm_1{background-position:0px -577px}
+.bg_ghm_2{background-position:-33px -577px}
+.bg_ghm_3{background-position:-66px -577px}
+.bg_gm_1{background-position:0px -100px}
+.bg_gm_2{background-position:-33px -100px}
+.bg_gm_3{background-position:-66px -100px}
+.bg_gmm_1 {background-position: 0px -610px}
+.bg_gmm_2 {background-position: -33px -610px}
+.bg_gmm_3 {background-position: -66px -610px}
+.bg_gw_1{background-position:-99px -397px}
+.bg_gw_2{background-position:-99px -430px}
+.bg_gw_3{background-position:-132px -430px}
+.bg_gw1_1{background-position:-168px -100px}
+.bg_gw1_2{background-position:-168px -133px}
+.bg_gw1_3{background-position:-168px -166px}
+.bg_bf_1{background-position:-168px -199px}
+.bg_bf_2{background-position:-168px -232px}
+.bg_bf_3{background-position:-168px -265px}
+.bg_p_1{background-position:0px -133px}
+.bg_p_2{background-position:-33px -133px}
+.bg_p_3{background-position:-66px -133px}
+.bg_pA_1{background-position:0px -166px}
+.bg_pA_2{background-position:-33px -166px}
+.bg_pA_3{background-position:-66px -166px}
+.bg_pB_1{background-position:0px -199px}
+.bg_pB_2{background-position:-33px -199px}
+.bg_pB_3{background-position:-66px -199px}
+.bg_pH_1{background-position:0px -232px}
+.bg_pH_2{background-position:-33px -232px}
+.bg_pH_3{background-position:-66px -232px}
+.bg_pQ_1{background-position:0px -265px}
+.bg_pQ_2{background-position:-33px -265px}
+.bg_pQ_3{background-position:-66px -265px}
+.bg_pW_1{background-position:0px -298px}
+.bg_pW_2{background-position:-33px -298px}
+.bg_pW_3{background-position:-66px -298px}
+.bg_pC_1{background-position:-168px -298px}
+.bg_pC_2{background-position:-168px -331px}
+.bg_pC_3{background-position:-168px -364px}
+.bg_pI_1{background-position:-99px -610px}
+.bg_pI_2{background-position:-132px -610px}
+.bg_pI_3{background-position:-165px -610px}
+.bg_sa_1{background-position:0px -331px}
+.bg_sa_2{background-position:-33px -331px}
+.bg_sa_3{background-position:-66px -331px}
+.bg_sg_1{background-position:0px -364px}
+.bg_sg_2{background-position:-33px -364px}
+.bg_sg_3{background-position:-66px -364px}
+.bg_V_1{background-position:0px -397px}
+.bg_V_2{background-position:-33px -397px}
+.bg_V_3{background-position:-66px -397px}
+.bg_W_1{background-position:0px -430px}
+.bg_W_2{background-position:-33px -430px}
+.bg_W_3{background-position:-66px -430px}
+.bg_f_1{background-position:-132px -34px}
+.bg_f_2{background-position:-132px -67px}
+.bg_f_3{background-position:-132px -100px}
+.lev1sm,.lev2sm,.lev3sm,.lev4sm,.lev5sm,.lev6sm,.lev7sm,.lev8sm,.lev9sm,.lev10sm{width:16px;height:16px;position:relative;top:-2px;margin-right:2px}
+.lev1sm{background-position:-36px -17px}
+.lev2sm{background-position:-53px -17px}
+.lev3sm{background-position:-68px 0px}
+.lev4sm{background-position:-85px 0px}
+.lev5sm{background-position:-70px -17px}
+.lev6sm{background-position:-87px -17px}
+.lev7sm{background-position:-102px 0px}
+.lev8sm{background-position:-104px -17px}
+.lev9sm{background-position:-119px 0px}
+.lev10sm{background-position:-121px -17px}
+.lev1{background-position:-99px -34px}
+.lev2{background-position:-99px -67px}
+.lev3{background-position:-99px -100px}
+.lev4{background-position:-99px -133px}
+.lev5{background-position:-99px -166px}
+.lev6{background-position:-99px -199px}
+.lev7{background-position:-99px -232px}
+.lev8{background-position:-99px -265px}
+.lev9{background-position:-99px -298px}
+.lev10{background-position:-99px -331px}
+.br0sm{background-position:-136px -133px;width:29px}
+.br20sm{background-position:-136px -166px;width:29px}
+.br40sm{background-position:-136px -199px;width:29px}
+.br60sm{background-position:-136px -232px;width:29px}
+.br80sm{background-position:-136px -265px;width:29px}
+.br20smX{background-position:-250px -166px;width:29px;height:32px}
+.br40smX{background-position:-250px -199px;width:29px;height:32px}
+.br60smX{background-position:-250px -232px;width:29px;height:32px}
+.br100sm,.bg_br_1{background-position:-136px -298px;width:29px}
+.br150sm,.bg_br_2{background-position:-135px -331px;height:38px}
+.br200sm,.bg_br_3{background-position:-134px -369px;height:38px}
+.bg_1sm,.bg_2sm,.bg_3sm,.mealsSm{position:relative;top:-2px;width:8px;height:8px;margin:0px 3px 0px 5px}
+.bg_1sm{background-position:-0px -17px}
+.bg_2sm{background-position:-9px -17px}
+.bg_3sm{background-position:-18px -17px}
+.bg_ggq_1{background-position: -201px 0px}
+.bg_ggq_2{background-position: -201px -34px}
+.bg_ggq_3{background-position: -201px -67px}
+.bg_pG_1{background-position: -201px -100px}
+.bg_pG_2{background-position: -201px -133px}
+.bg_pG_3{background-position: -201px -166px}
+.mealsSm{background-position:-27px -17px}
+.mealsBg{background-position:-51px 0px;width:16px;height:16px}
+#fcPnts{font-size:large;font-family:Arial, Helvetica, sans-serif}
+#fcMeals{font-weight:bold;color:green}
+#modal{cursor:pointer;position:fixed;right:7px;top:7px;z-index:1001;border:solid 1px #85A8C2;background-color:#DFEFDD;padding:3px;text-align:center;min-height:45px}
+#modal td{text-align:center;font-size:small}
+#modalClose{width:15px;height:16px;background-position:-144px -36px;position:relative;top:-14px;z-index:105}
+#shD{padding-top:5px;width:100px;margin:auto;cursor:default}
+div.brn,div.badges {font-size:small}
+.goal {background-position: -132px -413px; width: 16px; height: 16px;position:relative;top:-1px}
+.share {background-position: -149px -413px; width: 16px; height: 16px}
+.goalProg {position: relative;border: solid 1px #414382;border-radius: 4px;width: 50px;height: 10px;margin-top: 5px}
+.goalProgV {position: absolute;left: -1px;height: 10px;background-color: #BCE1F6;border-radius: 4px 0px 0px 4px;border: solid 1px #414382;border-width: 0px 0px 0px 1px}
+#fcLoginPanel > #fcPTBL { min-width: 157px}
+#loginBlock {cursor:pointer;padding:5px 20px 0 20px}
+#loginBlock:hover:active{background:transparent}
+#loginBlock .info-name{font-size:large}
+#loginBlock>.info-details{margin:0 auto}
+#loginBlock>.info-details td.ava {width:60px}
+#loginBlock>.info-details .badges{float:right;white-space: nowrap}
+#loginBlock>.info-details .brn{ width:40px;float: right;min-height: 32px;text-align: center}
+@media only screen and (max-width:760px) {
+	.header-block.info-block {width: 284px;margin-top: -10px}
+	#loginBlock>.info-name { text-align: left;margin-left: 4px}
+	#loginBlock>.info-details{ margin-left: 0}
+}
+@media only screen and (max-width:605px) {
+	.header-block.info-block {width: 204px}
+	#loginBlock>.info-details td.ava {width:50px}
+}
+@media only screen and (max-width:515px) {
+	#loginBlock>.info-name{ float: left}
+	.header-block.info-block {width: 164px;margin-left: 0;margin-right: 0}
+	#loginBlock>.info-details{ margin-top: -4px}
+	#loginBlock>.info-details .badges,#loginBlock>.info-details .brn{ float: none;text-align: left;width: auto}
+	#loginBlock>.info-details .badges{ margin-left: 5px}
+	#loginBlock>.info-details .badges>#fcPnts{ margin-left: 7px}
+	#loginBlock>.info-details .badges>.bdg-details{ display: none}
+	#loginBlock>.info-details .brn{ white-space: nowrap;text-align:left}
+	#loginBlock>.info-details .brn>br{ display: none}
+	#loginBlock>.info-details .brn>span[id^=brp]{ line-height:31px}
+	#loginBlock>.info-details .brn>span[id^=brp]#brp150,#loginBlock > .info-details .brn > span[id^=brp]#brp200{ line-height:normal}
+	#loginBlock>.info-details .brn>.fcImg {-webkit-transform:scale(0.7,0.7);-moz-transform:scale(0.7,0.7);-ms-transform:scale(0.7,0.7);-o-transform:scale(0.7,0.7);transform:scale(0.7,0.7);margin-top: -6px;padding-top:0}
+	#loginBlock>.info-details .brn>.br150sm,#loginBlock > .info-details .brn > .br200sm { margin-left: -1px;margin-top: -5px}
+	#loginBlock>.info-name { font-size: 14px;font-weight: bold}
+	#loginBlock>.info-name > .goal { float:right; margin-left:5px}
+}
+@media only screen and (max-width:405px) {
+	.header-top>.logo-holder.auth{ display: none}
+}
