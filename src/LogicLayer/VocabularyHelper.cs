@@ -165,7 +165,7 @@ namespace LogicLayer
 
                 if (tableNode != null)
                 {
-                    var trs = tableNode.ChildNodes.Descendants("tr").ToList();
+                    var trs = tableNode.Descendants("tr").ToList();
 
                     foreach (HtmlNode tr in trs)
                     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using GDomain;
@@ -19,10 +20,19 @@ namespace LogicLayerTests
             return new VocabularyHelper(html);
         }
 
+        private string Download(string url)
+        {
+            using (var client = new WebClient())
+            {
+                var data = client.DownloadData(url);
+                return Encoding.UTF8.GetString(data);
+            }
+        }
+
         [TestMethod]
         public void Populate_WordLove_FullCoverage()
         {
-            var html = _testHelper.OpenReadReturnHtmlString("vocabulary.com_love.html", "files");
+            var html = Download("https://www.vocabulary.com/dictionary/love");
             var helper = Create(html);
             VocabularyWord word = helper.Populate();
 
@@ -74,7 +84,7 @@ namespace LogicLayerTests
         [TestMethod]
         public void Populate_WordUxoricide_FullCoverage()
         {
-            var html = _testHelper.OpenReadReturnHtmlString("vocabulary.com_uxoricide.html", "files");
+            var html = Download("https://www.vocabulary.com/dictionary/uxoricide");
             var helper = Create(html);
 
             VocabularyWord word = helper.Populate();
